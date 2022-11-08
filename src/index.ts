@@ -1,3 +1,5 @@
+import { updateLanguageServiceSourceFile } from "../node_modules/typescript/lib/typescript";
+
 async function update() {
     let res = await fetch('../users.json');
     return await res.json();
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         
         let contactTable = document.getElementById('contactTable')!;
         contactTable.textContent='';
-        for (let u of orderByUser) {
+        for (let u of orderByUser) {1601801
             let tr = document.createElement('tr');
 			let username=document.createElement('td');
             let email=document.createElement('td');
@@ -75,5 +77,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
         let output = document.getElementById('sumWeight') as HTMLOutputElement;
         output.textContent=sum+'';
+    })
+
+    document.getElementById('brownEyes')?.addEventListener('click',async()=>{
+        let data = await update();
+        let filterBrown = data.users.filter((user:any)=>user.eyeColor==='Brown').length;
+        let output = document.getElementById('resultBrown') as HTMLOutputElement;
+        output.textContent=''+filterBrown;
     })
 })

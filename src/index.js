@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -24,7 +23,7 @@ function printData(users) {
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
     (_a = document.getElementById('all')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
         let data = yield update();
         let alphabetical = data.users.sort(function (a, b) {
@@ -60,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let contactTable = document.getElementById('contactTable');
         contactTable.textContent = '';
         for (let u of orderByUser) {
+            1601801;
             let tr = document.createElement('tr');
             let username = document.createElement('td');
             let email = document.createElement('td');
@@ -84,4 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let output = document.getElementById('sumWeight');
         output.textContent = sum + '';
     }));
+    (_d = document.getElementById('brownEyes')) === null || _d === void 0 ? void 0 : _d.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+        let data = yield update();
+        let filterBrown = data.users.filter((user) => user.eyeColor === 'Brown').length;
+        let output = document.getElementById('resultBrown');
+        output.textContent = '' + filterBrown;
+    }));
 });
+export {};
