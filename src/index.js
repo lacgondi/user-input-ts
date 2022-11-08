@@ -24,7 +24,7 @@ function printData(users) {
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
-    var _a, _b;
+    var _a, _b, _c;
     (_a = document.getElementById('all')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
         let data = yield update();
         let alphabetical = data.users.sort(function (a, b) {
@@ -72,5 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
             tr.appendChild(phone);
             contactTable.appendChild(tr);
         }
+    }));
+    (_c = document.getElementById('weight')) === null || _c === void 0 ? void 0 : _c.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+        let data = yield update();
+        let inputHeight = document.getElementById('height');
+        let filterHeight = data.users.filter((user) => user.height > parseInt(inputHeight.value));
+        let sum = 0;
+        for (let fh of filterHeight) {
+            sum += fh.weight;
+        }
+        let output = document.getElementById('sumWeight');
+        output.textContent = sum + '';
     }));
 });

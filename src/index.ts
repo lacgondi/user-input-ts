@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             }
         });
         
-
         let contactTable = document.getElementById('contactTable')!;
         contactTable.textContent='';
         for (let u of orderByUser) {
@@ -64,6 +63,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
             tr.appendChild(phone);
             contactTable.appendChild(tr);
 		}
+    })
 
+    document.getElementById('weight')?.addEventListener('click',async()=>{
+        let data = await update();
+        let inputHeight = document.getElementById('height') as HTMLInputElement;
+        let filterHeight = data.users.filter((user:any) => user.height>parseInt(inputHeight.value))
+        let sum = 0;
+        for(let fh of filterHeight){
+            sum+=fh.weight;
+        }
+        let output = document.getElementById('sumWeight') as HTMLOutputElement;
+        output.textContent=sum+'';
     })
 })
